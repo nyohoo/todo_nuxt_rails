@@ -1,6 +1,6 @@
 <template>
   <div v-if="user">
-    <p>名前: {{user.name}}</p>
+    <p>名前：{{user.name}}</p>;
     <AddTodo @submit="addTodo" />
     <TodoList :todos="todos" />
   </div>
