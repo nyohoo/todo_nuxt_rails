@@ -96,22 +96,42 @@ export default {
       clipped: false,
       drawer: false,
       fixed: false,
-      items: [
-        {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        }
-      ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: 'TODO App'
+    }
+  },
+  computed: {
+    user() {
+      return this.$store.state.auth.currentUser;
+    },
+    items() {
+      if (this.user) {
+        return [{
+          icon: 'mdi-apps',
+          title: "TODOS",
+          to: "/"
+        },
+        {
+          icon: "mdi-chart-bubble",
+          title: "MYPAGE",
+          to: "/mypage"
+        }
+        ];
+      } else {
+        return [{
+          icon: "mdi-apps",
+          title: "LOGIN",
+          to: "/login"
+        },
+        {
+          icon: "mdi-chart-bubble",
+          title: "SIGNUP",
+          to: "/signup"
+        }
+        ];
+      }
     }
   }
 }
