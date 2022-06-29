@@ -30,7 +30,7 @@ export default {
     console.log("API_KEY:", process.env.API_KEY);
   },
   methods: {
-    async addTodo(title) {
+    async addTodo(todo) {
       const { data } = await axios.post('/v1/todos', { todo });
       this.$store.dispatch("auth/setUser", {
         ...this.user,
