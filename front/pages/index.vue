@@ -2,7 +2,7 @@
   <div v-if="user">
     <p>名前：{{user.name}}</p>;
     <AddTodo @submit="addTodo" />
-    <TodoList :todos="todos" />
+    <TodoList :todos="user.todos" />
   </div>
 </template>
 
@@ -31,9 +31,10 @@ export default {
   },
   methods: {
     async addTodo(title) {
-      await axios.post('/v1/todos', { title });
-      this.todos.push({
-        title,
+      const { data } = await axios.post('/v1/todos', { todo });
+      this.$store.dispatch("auth/setUser", {
+        ...this.user,
+        todos: [...this.user.todos, data]
       });
     },
   },
