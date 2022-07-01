@@ -10,6 +10,7 @@
         <v-icon small @click="deleteItem(item)">delete</v-icon>
       </template>
     </v-data-table>
+    
   </v-card>
 </template>
 
@@ -39,7 +40,7 @@ export default {
       ]
     };
   },
-  computed: {
+  compoted: {
     user() {
       return this.$store.state.auth.currentUser;
     }
